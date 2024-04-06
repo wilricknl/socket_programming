@@ -32,3 +32,15 @@ if (NOT WIN32)
             01_hello_client
             lecture01/hello_client.c)
 endif ()
+
+# -----------------------------------------------------------------------------
+# LECTURE 02
+# -----------------------------------------------------------------------------
+
+add_executable(
+    02_server
+    lecture02/server.cpp)
+
+add_executable(
+    02_client
+    lecture02/client.cpp)
