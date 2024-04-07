@@ -44,3 +44,11 @@ add_executable(
 add_executable(
     02_client
     lecture02/client.cpp)
+
+# -----------------------------------------------------------------------------
+# LECTURE 03
+# -----------------------------------------------------------------------------
+
+add_executable(
+    03_conversions
+    lecture03/conversions.cpp)
