@@ -52,10 +52,17 @@ int main()
         WSAStringToAddress(string_address, AF_INET, NULL, (SOCKADDR*)&address, &address_size);
 
         printf("WSAStringToAddress: %#010lx:%#6x\n", address.sin_addr, address.sin_port);
+    }
 
-        // address to network with Windows
-        // for some reason it only works after initialization with WSAStringToAddress,
-        // so I guess just use the inet-functions.
+    // address to network with Windows
+    {
+        sockaddr_in address;
+        address.sin_addr.s_addr = htonl(0x01020304);
+        address.sin_port = htons(80);
+        address.sin_family = AF_INET;
+        int address_size = sizeof(address);
+
+        // Important to have the sin_family set, otherwise this function will fail.
         char buffer[50]{0};
         DWORD buffer_size = sizeof(buffer);
         WSAAddressToString((sockaddr*)&address, address_size, NULL, buffer, &buffer_size);
